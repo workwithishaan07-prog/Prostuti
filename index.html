@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>প্রস্তুতি — WB Govt Exam Prep</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16283C">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Prostuti">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Karla:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+  :root{
+    --ink:#16283C;
+    --ink-2:#1E3550;
+    --paper:#F4E8D0;
+    --paper-2:#EEDFC0;
+    --terracotta:#BB4430;
+    --terracotta-dark:#8C3122;
+    --turmeric:#E3A23C;
+    --paddy:#52734D;
+    --text-dark:#241C12;
+    --text-light:#F7EFDD;
+    --card:#FFFCF4;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(227,162,60,0.10), transparent 40%),
+      radial-gradient(circle at 90% 85%, rgba(187,68,48,0.14), transparent 45%);
+    font-family:'Karla', sans-serif;
+    color:var(--text-dark);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:0 0 48px 0;
+  }
+  .bn{font-family:'Hind Siliguri', sans-serif;}
+  .app{
+    width:100%;
+    max-width:560px;
+    background:var(--paper);
+    min-height:100vh;
+    box-shadow:0 0 60px rgba(0,0,0,0.35);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* ---- header ---- */
+  header{
+    background:var(--ink);
+    color:var(--text-light);
+    padding:28px 22px 20px;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:'Hind Siliguri', sans-serif;
+    font-size:13px;
+    letter-spacing:.08em;
+    color:var(--turmeric);
+    margin:0 0 4px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:700;
+    font-size:34px;
+    line-height:1.05;
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+  h1 .bn-word{font-family:'Hind Siliguri',sans-serif; font-weight:600;}
+  .tagline{
+    font-size:14px;
+    color:rgba(247,239,221,0.72);
+    margin:0;
+    max-width:38ch;
+  }
+  .exam-chips{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    margin-top:14px;
+  }
+  .exam-chip{
+    font-size:11px;
+    padding:4px 9px;
+    border:1px solid rgba(247,239,221,0.28);
+    border-radius:3px;
+    color:rgba(247,239,221,0.85);
+    letter-spacing:.02em;
+  }
+
+  /* ---- frieze divider: terracotta temple cornice motif ---- */
+  .frieze{
+    height:14px;
+    width:100%;
+    background-color:var(--terracotta);
+    background-image:
+      linear-gradient(135deg, var(--terracotta-dark) 25%, transparent 25.5%),
+      linear-gradient(225deg, var(--terracotta-dark) 25%, transparent 25.5%),
+      linear-gradient(315deg, var(--terracotta-dark) 25%, transparent 25.5%),
+      linear-gradient(45deg, var(--terracotta-dark) 25%, transparent 25.5%);
+    background-position: 0 0, 7px 0, 7px -7px, 0px 7px;
+    background-size: 14px 14px;
+  }
+
+  /* ---- tabs ---- */
+  nav.tabs{
+    display:flex;
+    background:var(--paper-2);
+    border-bottom:2px solid var(--ink);
+  }
+  nav.tabs button{
+    flex:1;
+    padding:13px 4px;
+    background:none;
+    border:none;
+    font-family:'Karla', sans-serif;
+    font-weight:700;
+    font-size:13.5px;
+    letter-spacing:.02em;
+    color:var(--text-dark);
+    opacity:.55;
+    cursor:pointer;
+    border-bottom:3px solid transparent;
+    transition:opacity .15s, border-color .15s;
+  }
+  nav.tabs button.active{
+    opacity:1;
+    color:var(--terracotta-dark);
+    border-bottom-color:var(--terracotta);
+  }
+
+  main{ padding:20px 20px 10px; }
+  section{ display:none; }
+  section.active{ display:block; animation:fade .25s ease; }
+  @keyframes fade{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+
+  h2.section-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:21px;
+    margin:0 0 3px;
+    color:var(--ink);
+  }
+  .section-sub{
+    font-size:12.5px;
+    color:#6b5f4c;
+    margin:0 0 16px;
+  }
+
+  /* ---- quiz ---- */
+  .cat-scroll{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:10px;
+    margin-bottom:6px;
+  }
+  .cat-scroll::-webkit-scrollbar{height:0;}
+  .cat-btn{
+    flex:0 0 auto;
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:4px;
+    padding:9px 12px;
+    font-family:'Karla',sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    cursor:pointer;
+    color:var(--text-dark);
+    white-space:nowrap;
+  }
+  .cat-btn .score-pill{
+    display:inline-block;
+    margin-left:6px;
+    font-size:10px;
+    background:var(--paddy);
+    color:#fff;
+    padding:1px 5px;
+    border-radius:8px;
+  }
+  .cat-btn.selected{
+    background:var(--ink);
+    color:var(--text-light);
+    border-color:var(--ink);
+  }
+
+  .quiz-card{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:6px;
+    padding:18px;
+    margin-top:8px;
+  }
+  .quiz-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12px;
+    font-weight:700;
+    color:var(--terracotta-dark);
+    margin-bottom:10px;
+    letter-spacing:.02em;
+  }
+  .progress-dots{ display:flex; gap:4px; }
+  .progress-dots span{
+    width:6px;height:6px;border-radius:50%;
+    background:#d9cba6;
+  }
+  .progress-dots span.done{ background:var(--terracotta); }
+  .progress-dots span.current{ background:var(--turmeric); }
+
+  .q-text{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:18px;
+    line-height:1.35;
+    margin:0 0 16px;
+    color:var(--ink);
+  }
+  .opt{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:#fff;
+    border:1.5px solid #cdbf9c;
+    border-radius:5px;
+    padding:11px 13px;
+    margin-bottom:9px;
+    font-family:'Karla',sans-serif;
+    font-size:14px;
+    cursor:pointer;
+    color:var(--text-dark);
+    transition:border-color .12s, background .12s;
+  }
+  .opt:hover{ border-color:var(--ink); }
+  .opt.correct{ background:#E6EFE3; border-color:var(--paddy); font-weight:700; }
+  .opt.wrong{ background:#F6E1DA; border-color:var(--terracotta); font-weight:700; }
+  .opt[disabled]{ cursor:default; }
+
+  .explain{
+    background:var(--paper-2);
+    border-left:3px solid var(--turmeric);
+    padding:10px 12px;
+    font-size:13px;
+    border-radius:0 4px 4px 0;
+    margin:10px 0 4px;
+    display:none;
+  }
+  .explain.show{ display:block; }
+
+  .next-btn{
+    margin-top:12px;
+    width:100%;
+    background:var(--terracotta);
+    color:#fff;
+    border:none;
+    padding:12px;
+    font-family:'Karla',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    border-radius:5px;
+    cursor:pointer;
+    display:none;
+  }
+  .next-btn.show{ display:block; }
+
+  .result-card{
+    text-align:center;
+    padding:26px 18px;
+  }
+  .result-num{
+    font-family:'Fraunces', serif;
+    font-size:52px;
+    font-weight:700;
+    color:var(--terracotta);
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .result-label{ font-size:13px; color:#6b5f4c; margin-bottom:18px; }
+  .retry-btn{
+    background:var(--ink);
+    color:var(--text-light);
+    border:none;
+    padding:11px 20px;
+    border-radius:5px;
+    font-weight:700;
+    font-family:'Karla',sans-serif;
+    cursor:pointer;
+    font-size:13.5px;
+  }
+  .ca-note{
+    font-size:11.5px;
+    background:#FBEFD9;
+    border:1px dashed var(--turmeric);
+    padding:8px 10px;
+    border-radius:4px;
+    margin-bottom:12px;
+    color:#6b5326;
+  }
+
+  /* ---- planner ---- */
+  .countdown-block{
+    background:var(--ink);
+    color:var(--text-light);
+    border-radius:6px;
+    padding:18px;
+    margin-bottom:18px;
+  }
+  .countdown-row{ display:flex; align-items:baseline; gap:10px; }
+  .countdown-num{
+    font-family:'Fraunces', serif;
+    font-size:44px;
+    font-weight:700;
+    color:var(--turmeric);
+    line-height:1;
+  }
+  .countdown-txt{ font-size:13px; color:rgba(247,239,221,.75); }
+  .date-row{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+  }
+  .date-row input[type=date]{
+    background:rgba(247,239,221,.08);
+    border:1px solid rgba(247,239,221,.35);
+    color:var(--text-light);
+    padding:6px 8px;
+    border-radius:4px;
+    font-family:'Karla',sans-serif;
+    font-size:12.5px;
+  }
+
+  .subject-list{ margin-bottom:20px; }
+  .subject-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--card);
+    border:1px solid #cdbf9c;
+    border-radius:5px;
+    padding:10px 12px;
+    margin-bottom:7px;
+  }
+  .subject-row.done{ opacity:.55; }
+  .subject-row.done .subject-name{ text-decoration:line-through; }
+  .checkbox{
+    width:19px;height:19px;
+    border:2px solid var(--terracotta);
+    border-radius:4px;
+    flex:0 0 auto;
+    cursor:pointer;
+    position:relative;
+  }
+  .checkbox.checked{ background:var(--terracotta); }
+  .checkbox.checked::after{
+    content:"✓";
+    color:#fff;
+    font-size:12px;
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-56%);
+  }
+  .subject-name{ flex:1; font-size:14px; font-weight:600; }
+  .del-btn{
+    background:none;border:none;color:#a58e63;font-size:16px;cursor:pointer;padding:0 4px;
+  }
+  .add-row{ display:flex; gap:8px; margin-bottom:22px; }
+  .add-row input{
+    flex:1;
+    padding:10px 12px;
+    border:1.5px solid var(--ink);
+    border-radius:5px;
+    font-family:'Karla',sans-serif;
+    font-size:13.5px;
+  }
+  .add-row button{
+    background:var(--paddy);
+    color:#fff;
+    border:none;
+    padding:0 16px;
+    border-radius:5px;
+    font-weight:700;
+    cursor:pointer;
+  }
+
+  .week-block h3{
+    font-family:'Fraunces',serif;
+    font-size:15px;
+    margin:0 0 10px;
+    color:var(--ink);
+  }
+  .week-bars{
+    display:flex;
+    gap:8px;
+    align-items:flex-end;
+    height:80px;
+    background:var(--card);
+    border:1px solid #cdbf9c;
+    border-radius:6px;
+    padding:12px 10px 8px;
+  }
+  .day-col{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    height:100%;
+  }
+  .bar{
+    width:60%;
+    background:var(--terracotta);
+    border-radius:2px 2px 0 0;
+    min-height:3px;
+    transition:height .3s;
+  }
+  .day-label{ font-size:9.5px; margin-top:5px; color:#6b5f4c; }
+
+  /* ---- flashcards ---- */
+  .flash-wrap{ text-align:center; }
+  .flashcard{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:8px;
+    min-height:190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px 18px;
+    cursor:pointer;
+    position:relative;
+    margin-bottom:14px;
+  }
+  .flashcard::before{
+    content:"";
+    position:absolute; inset:6px;
+    border:1px dashed #cdbf9c;
+    border-radius:5px;
+    pointer-events:none;
+  }
+  .flash-label{
+    position:absolute;
+    top:10px; left:14px;
+    font-size:10px;
+    letter-spacing:.08em;
+    font-weight:700;
+    color:var(--terracotta-dark);
+    text-transform:uppercase;
+  }
+  .flash-text{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.4;
+  }
+  .flash-hint{
+    font-size:11px;
+    color:#8a7a58;
+    margin-bottom:14px;
+  }
+  .flash-nav{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+  }
+  .flash-nav button{
+    background:var(--ink);
+    color:var(--text-light);
+    border:none;
+    padding:9px 16px;
+    border-radius:5px;
+    font-weight:700;
+    font-size:13px;
+    cursor:pointer;
+  }
+  .flash-nav button.secondary{
+    background:none;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+  }
+
+  footer{
+    text-align:center;
+    padding:18px 20px 4px;
+    font-size:11px;
+    color:#8a7a58;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    section.active{ animation:none; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <p class="eyebrow bn">সরকারি চাকরি প্রস্তুতি</p>
+    <h1>Prostuti <span class="bn-word">প্রস্তুতি</span></h1>
+    <p class="tagline">Your daily companion for West Bengal state government exams — WBCS, WBP, WBSSC, Clerkship &amp; more.</p>
+    <div class="exam-chips">
+      <span class="exam-chip">WBCS</span>
+      <span class="exam-chip">WB Police</span>
+      <span class="exam-chip">WBSSC</span>
+      <span class="exam-chip">Clerkship</span>
+      <span class="exam-chip">Primary TET</span>
+    </div>
+  </header>
+  <div class="frieze"></div>
+
+  <nav class="tabs">
+    <button data-tab="quiz" class="active">QUIZ</button>
+    <button data-tab="planner">PLANNER</button>
+    <button data-tab="cards">FLASHCARDS</button>
+  </nav>
+
+  <main>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="active">
+      <h2 class="section-title">Practice quiz</h2>
+      <p class="section-sub">Pick a subject and test yourself, one question at a time.</p>
+
+      <div class="cat-scroll" id="catScroll"></div>
+      <div id="quizArea"></div>
+    </section>
+
+    <!-- PLANNER -->
+    <section id="planner">
+      <h2 class="section-title">Study planner</h2>
+      <p class="section-sub">Track days left and today's subjects.</p>
+
+      <div class="countdown-block">
+        <div class="countdown-row">
+          <div class="countdown-num" id="daysLeft">--</div>
+          <div class="countdown-txt">days left to your exam</div>
+        </div>
+        <div class="date-row">
+          <label class="bn" for="examDate">পরীক্ষার তারিখ</label>
+          <input type="date" id="examDate">
+        </div>
+      </div>
+
+      <div class="subject-list" id="subjectList"></div>
+      <div class="add-row">
+        <input type="text" id="newTaskInput" placeholder="Add a subject or task for today">
+        <button id="addTaskBtn">Add</button>
+      </div>
+
+      <div class="week-block">
+        <h3>This week's completions</h3>
+        <div class="week-bars" id="weekBars"></div>
+      </div>
+    </section>
+
+    <!-- FLASHCARDS -->
+    <section id="cards">
+      <h2 class="section-title">Flashcards</h2>
+      <p class="section-sub">Tap a card to flip it. Verify current-affairs facts closer to your exam date.</p>
+
+      <div class="cat-scroll" id="flashCatScroll"></div>
+
+      <div class="flash-wrap">
+        <p class="flash-hint" id="flashCount">Card 1 of 20</p>
+        <div class="flashcard" id="flashcard">
+          <span class="flash-label" id="flashLabel">TERM</span>
+          <div class="flash-text" id="flashText">Tap category above to begin</div>
+        </div>
+        <div class="flash-nav">
+          <button class="secondary" id="prevCard">← Prev</button>
+          <button id="shuffleCard">Shuffle</button>
+          <button class="secondary" id="nextCard">Next →</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>Made for West Bengal state government exam aspirants · সবাইকে শুভকামনা</footer>
+</div>
+
+<script>
+/* ============ DATA ============ */
+const QUIZ_DATA = {
+  wb_gk: { label:"WB Static GK", questions:[
+    {q:"What is the capital of West Bengal?", o:["Kolkata","Howrah","Durgapur","Siliguri"], a:0, e:"Kolkata has been the capital of West Bengal since 1947."},
+    {q:"Which is the state animal of West Bengal?", o:["Royal Bengal Tiger","Fishing Cat","Indian Elephant","Gangetic Dolphin"], a:1, e:"The Fishing Cat (Mach-baghrol) was declared the state animal of West Bengal in 2012."},
+    {q:"Which distributary of the Ganga flows past Kolkata?", o:["Padma","Hooghly","Torsa","Rupnarayan"], a:1, e:"The Hooghly river, a distributary of the Ganga, flows through Kolkata."},
+    {q:"Sandakphu, the highest point in West Bengal, is located in which district?", o:["Jalpaiguri","Darjeeling","Kalimpong","Alipurduar"], a:1, e:"Sandakphu (about 3,636 m) lies in the Darjeeling district."},
+    {q:"The terracotta temples of Bishnupur are located in which district?", o:["Bankura","Purulia","Birbhum","Malda"], a:0, e:"Bishnupur, famous for its terracotta temples, is in Bankura district."},
+    {q:"The Sundarbans, the world's largest mangrove forest, is shared between West Bengal and which country?", o:["Myanmar","Nepal","Bangladesh","Bhutan"], a:2, e:"The Sundarbans span the delta region shared by West Bengal (India) and Bangladesh."},
+    {q:"Which of these does West Bengal NOT share an international border with?", o:["Bangladesh","Bhutan","Nepal","Pakistan"], a:3, e:"West Bengal borders Bangladesh, Bhutan and Nepal, but not Pakistan."}
+  ]},
+  history: { label:"History", questions:[
+    {q:"The Indigo Revolt (Neel Bidroho) in Bengal took place around which years?", o:["1857-58","1859-60","1875-76","1905-06"], a:1, e:"Peasants revolted against forced indigo cultivation in Bengal in 1859-60."},
+    {q:"Who wrote the play 'Nil Darpan', depicting the plight of indigo farmers?", o:["Bankim Chandra Chattopadhyay","Dinabandhu Mitra","Michael Madhusudan Dutt","Rabindranath Tagore"], a:1, e:"'Nil Darpan' (1860) was written by Dinabandhu Mitra."},
+    {q:"Who became the first Indian, and the first Asian, to win a Nobel Prize?", o:["C.V. Raman","Rabindranath Tagore","Amartya Sen","Ronald Ross"], a:1, e:"Rabindranath Tagore won the Nobel Prize in Literature in 1913 for 'Gitanjali'."},
+    {q:"Who authored 'Vande Mataram', later adopted as India's national song?", o:["Rabindranath Tagore","Ishwar Chandra Vidyasagar","Bankim Chandra Chattopadhyay","Sarat Chandra Chattopadhyay"], a:2, e:"Bankim Chandra Chattopadhyay wrote 'Vande Mataram' in his novel Anandamath."},
+    {q:"Swami Vivekananda represented Hinduism at which 1893 international event?", o:["League of Nations founding","World's Parliament of Religions, Chicago","Round Table Conference","Paris Peace Conference"], a:1, e:"He delivered his famous address at the World's Parliament of Religions in Chicago in 1893."},
+    {q:"The first partition of Bengal, which sparked major protest, was carried out in which year by Lord Curzon?", o:["1905","1911","1919","1935"], a:0, e:"Bengal was first partitioned in 1905; it was annulled in 1911."}
+  ]},
+  geography: { label:"Geography", questions:[
+    {q:"West Bengal lies mainly within which major delta system?", o:["Godavari delta","Ganga-Brahmaputra delta","Krishna delta","Indus delta"], a:1, e:"Much of southern West Bengal lies in the fertile Ganga-Brahmaputra delta."},
+    {q:"The Darjeeling Himalayan region of West Bengal is especially known for producing which crop?", o:["Coffee","Tea","Cotton","Sugarcane"], a:1, e:"Darjeeling is world-famous for its tea gardens."},
+    {q:"Digha, a popular beach destination, lies in which district of West Bengal?", o:["Purba Medinipur","South 24 Parganas","Bankura","Nadia"], a:0, e:"Digha is located in Purba Medinipur district, on the Bay of Bengal coast."},
+    {q:"The Farakka Barrage, an important structure for West Bengal, is built across which river?", o:["Damodar","Ganga","Teesta","Ajay"], a:1, e:"The Farakka Barrage on the Ganga was built to divert water into the Hooghly."},
+    {q:"The relatively dry, undulating western part of West Bengal (Bankura, Purulia, parts of Birbhum) is known as the:", o:["Terai region","Rarh region","Sundarbans region","Duars region"], a:1, e:"This laterite upland tract is traditionally called the Rarh region."},
+    {q:"The Duars region of North Bengal is chiefly known for:", o:["Desert landscapes","Forests, tea gardens and river plains at the Himalayan foothills","Coral reefs","Salt pans"], a:1, e:"The Duars are foothill plains known for forests, tea estates and rivers."}
+  ]},
+  polity: { label:"Polity", questions:[
+    {q:"Which Article of the Indian Constitution guarantees the Right to Constitutional Remedies?", o:["Article 21","Article 32","Article 14","Article 19"], a:1, e:"Article 32 empowers citizens to approach the Supreme Court to enforce fundamental rights."},
+    {q:"Who is the constitutional/nominal head of a state government in India?", o:["Chief Minister","Governor","Chief Secretary","Speaker"], a:1, e:"The Governor is the nominal head of a state, appointed by the President."},
+    {q:"What is the minimum age to contest election as an MLA in India?", o:["21 years","25 years","30 years","35 years"], a:1, e:"A candidate must be at least 25 years old to contest for a Legislative Assembly seat."},
+    {q:"Which schedule of the Constitution deals with the powers of Panchayati Raj institutions?", o:["9th Schedule","10th Schedule","11th Schedule","12th Schedule"], a:2, e:"The 11th Schedule lists subjects assigned to Panchayats; the 12th covers Municipalities."},
+    {q:"The West Bengal Legislative Assembly is:", o:["Bicameral, with a Legislative Council","Unicameral, with only a Legislative Assembly","Tricameral","Advisory only"], a:1, e:"West Bengal has a unicameral legislature; its Legislative Council was abolished in 1969."},
+    {q:"How many elected seats does the West Bengal Legislative Assembly have?", o:["234","294","324","403"], a:1, e:"The West Bengal Vidhan Sabha has 294 seats."}
+  ]},
+  reasoning: { label:"Reasoning", questions:[
+    {q:"Find the next number: 2, 6, 12, 20, 30, ?", o:["36","40","42","48"], a:2, e:"Differences increase by 2 each time (4,6,8,10,12) → 30+12 = 42."},
+    {q:"If CAT is coded as DBU, what is DOG coded as?", o:["EPH","EPI","FPH","EOH"], a:0, e:"Each letter is shifted forward by one: D→E, O→P, G→H, giving EPH."},
+    {q:"Pick the odd one out: Apple, Mango, Potato, Banana", o:["Apple","Mango","Potato","Banana"], a:2, e:"Potato is a vegetable/tuber; the others are fruits."},
+    {q:"A is B's father. B is C's sister. How is A related to C?", o:["Uncle","Father","Brother","Grandfather"], a:1, e:"Since B is C's sister, and A is B's father, A is also C's father."},
+    {q:"Complete the series: AZ, BY, CX, ?", o:["DW","DV","EW","EW"], a:0, e:"First letters move forward (A,B,C,D...); second letters move backward (Z,Y,X,W...) → DW."},
+    {q:"What is the angle between the hour and minute hands of a clock at 3:15?", o:["0°","7.5°","15°","22.5°"], a:1, e:"At 3:15 the hour hand has moved slightly past 3, giving a 7.5° gap from the minute hand."}
+  ]},
+  math: { label:"Math", questions:[
+    {q:"What is 15% of 240?", o:["24","32","36","40"], a:2, e:"15% of 240 = (15/100) × 240 = 36."},
+    {q:"An item costing ₹400 is sold at a 20% profit. What is the selling price?", o:["₹420","₹440","₹460","₹480"], a:3, e:"Profit = 20% of 400 = 80, so SP = 400 + 80 = ₹480."},
+    {q:"What is the average of 10, 20, 30 and 40?", o:["20","25","30","35"], a:1, e:"Sum = 100, divided by 4 numbers = 25."},
+    {q:"A 100 m long train crosses a pole in 10 seconds. What is its speed in km/h?", o:["18 km/h","36 km/h","45 km/h","60 km/h"], a:1, e:"Speed = 100m/10s = 10 m/s = 10 × 18/5 = 36 km/h."},
+    {q:"What is the simple interest on ₹1,000 at 5% per annum for 2 years?", o:["₹50","₹100","₹150","₹200"], a:1, e:"SI = (P×R×T)/100 = (1000×5×2)/100 = ₹100."},
+    {q:"What is the LCM of 12 and 18?", o:["24","30","36","72"], a:2, e:"12 = 2²×3, 18 = 2×3² → LCM = 2²×3² = 36."}
+  ]},
+  current_affairs: { label:"Current Affairs", questions:[
+    {q:"Who is the Chief Minister of West Bengal, following the 2026 assembly election?", o:["Mamata Banerjee","Suvendu Adhikari","Sovandeb Chattopadhyay","Firhad Hakim"], a:1, e:"Suvendu Adhikari became Chief Minister of West Bengal from 9 May 2026."},
+    {q:"Who is the current Governor of West Bengal?", o:["C.V. Ananda Bose","Jagdeep Dhankhar","R. N. Ravi","La. Ganesan"], a:2, e:"R. N. Ravi was appointed Governor of West Bengal in March 2026, succeeding C.V. Ananda Bose."},
+    {q:"Before West Bengal, R. N. Ravi served as Governor of which state?", o:["Kerala","Tamil Nadu","Bihar","Odisha"], a:1, e:"R. N. Ravi was Governor of Tamil Nadu from September 2021 before his transfer to West Bengal."},
+    {q:"Who became Leader of the Opposition in the West Bengal Assembly after the 2026 election?", o:["Suvendu Adhikari","Adhir Ranjan Chowdhury","Sovandeb Chattopadhyay","Sujan Chakraborty"], a:2, e:"Sovandeb Chattopadhyay took over as Leader of the Opposition from 9 May 2026."}
+  ]}
+};
+
+const FLASHCARDS = {
+  wb_gk: { label:"WB Static GK", cards:[
+    {t:"Capital of West Bengal", b:"Kolkata"},
+    {t:"State animal", b:"Fishing Cat (Mach-baghrol)"},
+    {t:"State bird", b:"White-throated Kingfisher"},
+    {t:"State flower", b:"Night-blooming Jasmine (Shiuli / Shefali)"},
+    {t:"State tree", b:"Chatim / Devil Tree (Alstonia scholaris)"},
+    {t:"Highest peak in WB", b:"Sandakphu (~3,636 m), Darjeeling district"},
+    {t:"Famous terracotta temple town", b:"Bishnupur, Bankura district"},
+    {t:"World's largest mangrove forest (shared)", b:"Sundarbans — shared with Bangladesh"},
+    {t:"Number of seats in WB Legislative Assembly", b:"294"},
+    {t:"Type of WB legislature", b:"Unicameral (Legislative Council abolished 1969)"}
+  ]},
+  history: { label:"History", cards:[
+    {t:"Indigo Revolt (Neel Bidroho)", b:"1859–60, peasant uprising against forced indigo farming"},
+    {t:"'Nil Darpan' playwright", b:"Dinabandhu Mitra"},
+    {t:"First Indian Nobel laureate", b:"Rabindranath Tagore, Literature, 1913 (for Gitanjali)"},
+    {t:"Author of 'Vande Mataram'", b:"Bankim Chandra Chattopadhyay, in the novel Anandamath"},
+    {t:"Chicago address, 1893", b:"Swami Vivekananda at the World's Parliament of Religions"},
+    {t:"First partition of Bengal", b:"1905, by Lord Curzon; annulled in 1911"},
+    {t:"First Governor of Bengal (post-1947)", b:"Chakravarti Rajagopalachari"}
+  ]},
+  current_affairs: { label:"Current Affairs", cards:[
+    {t:"Chief Minister of West Bengal", b:"Suvendu Adhikari, since 9 May 2026"},
+    {t:"Governor of West Bengal", b:"R. N. Ravi, since March 2026"},
+    {t:"Leader of Opposition, WB Assembly", b:"Sovandeb Chattopadhyay, since 9 May 2026"},
+    {t:"R. N. Ravi's previous posting", b:"Governor of Tamil Nadu (from Sept 2021)"}
+  ]}
+};
+
+const DEFAULT_SUBJECTS = ["Bengali","English","Mathematics","Reasoning","General Studies"];
+
+/* ============ STATE ============ */
+let quizState = { catId:null, idx:0, score:0, answered:false, order:[] };
+let flashState = { catId:'wb_gk', idx:0, flipped:false, order:[] };
+let plannerState = { examDate:null, tasks:[], history:{} };
+
+/* ============ STORAGE HELPERS ============
+   Uses window.storage when running inside a Claude artifact (syncs across
+   your Claude sessions), and falls back to the browser's own localStorage
+   when running as a standalone installed app / website (saves on-device). */
+const hasClaudeStorage = () => (typeof window !== 'undefined' && window.storage && typeof window.storage.get === 'function');
+
+async function storageGet(key){
+  if(hasClaudeStorage()){
+    try{ const r = await window.storage.get(key, false); return r ? r.value : null; }catch(e){ return null; }
+  }
+  return localStorage.getItem(key);
+}
+async function storageSet(key, value){
+  if(hasClaudeStorage()){
+    try{ await window.storage.set(key, value, false); return; }catch(e){ /* fall through */ }
+  }
+  try{ localStorage.setItem(key, value); }catch(e){ console.error('save failed', e); }
+}
+
+async function loadPlanner(){
+  try{
+    const v = await storageGet('planner-state');
+    if(v){ plannerState = JSON.parse(v); }
+  }catch(e){ /* no saved state yet */ }
+  if(!plannerState.tasks || plannerState.tasks.length===0){
+    plannerState.tasks = DEFAULT_SUBJECTS.map((s,i)=>({id:'d'+i, text:s, done:false}));
+  }
+  if(!plannerState.history) plannerState.history = {};
+}
+async function savePlanner(){
+  await storageSet('planner-state', JSON.stringify(plannerState));
+}
+async function loadQuizScores(){
+  try{
+    const v = await storageGet('quiz-scores');
+    if(v) return JSON.parse(v);
+  }catch(e){}
+  return {};
+}
+async function saveQuizScore(catId, score, total){
+  let scores = await loadQuizScores();
+  const pct = Math.round((score/total)*100);
+  if(!scores[catId] || pct > scores[catId]) scores[catId] = pct;
+  await storageSet('quiz-scores', JSON.stringify(scores));
+  return scores;
+}
+
+/* ============ TABS ============ */
+document.querySelectorAll('nav.tabs button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ============ QUIZ ============ */
+function shuffle(arr){ return arr.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(v=>v[1]); }
+
+async function renderCatScroll(){
+  const scores = await loadQuizScores();
+  const wrap = document.getElementById('catScroll');
+  wrap.innerHTML = '';
+  Object.keys(QUIZ_DATA).forEach(id=>{
+    const b = document.createElement('button');
+    b.className = 'cat-btn' + (quizState.catId===id ? ' selected':'');
+    const pct = scores[id];
+    b.innerHTML = QUIZ_DATA[id].label + (pct!==undefined ? `<span class="score-pill">${pct}%</span>` : '');
+    b.addEventListener('click', ()=> startQuiz(id));
+    wrap.appendChild(b);
+  });
+}
+
+function startQuiz(catId){
+  quizState = { catId, idx:0, score:0, answered:false, order:shuffle([...Array(QUIZ_DATA[catId].questions.length).keys()]) };
+  renderCatScroll();
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion(){
+  const area = document.getElementById('quizArea');
+  if(!quizState.catId){
+    area.innerHTML = `<p class="section-sub" style="margin-top:20px;">Choose a subject above to start practicing.</p>`;
+    return;
+  }
+  const cat = QUIZ_DATA[quizState.catId];
+  if(quizState.idx >= cat.questions.length){
+    const pct = Math.round((quizState.score/cat.questions.length)*100);
+    area.innerHTML = `
+      <div class="quiz-card result-card">
+        <div class="result-num">${quizState.score}/${cat.questions.length}</div>
+        <div class="result-label">You scored ${pct}% in ${cat.label}</div>
+        <button class="retry-btn" id="retryBtn">Try again</button>
+      </div>`;
+    document.getElementById('retryBtn').addEventListener('click', ()=> startQuiz(quizState.catId));
+    saveQuizScore(quizState.catId, quizState.score, cat.questions.length).then(()=>renderCatScroll());
+    return;
+  }
+  const qIndex = quizState.order[quizState.idx];
+  const question = cat.questions[qIndex];
+  const dots = cat.questions.map((_,i)=>{
+    let cls = '';
+    if(i < quizState.idx) cls = 'done';
+    else if(i === quizState.idx) cls = 'current';
+    return `<span class="${cls}"></span>`;
+  }).join('');
+
+  area.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-meta">
+        <span>Q${quizState.idx+1} / ${cat.questions.length}</span>
+        <div class="progress-dots">${dots}</div>
+      </div>
+      <p class="q-text">${question.q}</p>
+      <div id="optWrap"></div>
+      <div class="explain" id="explainBox">${question.e}</div>
+      <button class="next-btn" id="nextBtn">Next question</button>
+    </div>`;
+
+  const optWrap = document.getElementById('optWrap');
+  question.o.forEach((optText, i)=>{
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.textContent = optText;
+    b.addEventListener('click', ()=> selectOption(i, question));
+    optWrap.appendChild(b);
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    quizState.idx += 1;
+    quizState.answered = false;
+    renderQuizQuestion();
+  });
+}
+
+function selectOption(i, question){
+  if(quizState.answered) return;
+  quizState.answered = true;
+  if(i === question.a) quizState.score += 1;
+  document.querySelectorAll('.opt').forEach((btn, idx)=>{
+    btn.disabled = true;
+    if(idx === question.a) btn.classList.add('correct');
+    else if(idx === i) btn.classList.add('wrong');
+  });
+  document.getElementById('explainBox').classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+/* ============ PLANNER ============ */
+function renderCountdown(){
+  const el = document.getElementById('daysLeft');
+  const input = document.getElementById('examDate');
+  if(plannerState.examDate){
+    input.value = plannerState.examDate;
+    const today = new Date(); today.setHours(0,0,0,0);
+    const target = new Date(plannerState.examDate); target.setHours(0,0,0,0);
+    const diff = Math.round((target - today) / 86400000);
+    el.textContent = diff >= 0 ? diff : 0;
+  } else {
+    el.textContent = '--';
+  }
+}
+
+function renderSubjects(){
+  const wrap = document.getElementById('subjectList');
+  wrap.innerHTML = '';
+  plannerState.tasks.forEach(task=>{
+    const row = document.createElement('div');
+    row.className = 'subject-row' + (task.done ? ' done' : '');
+    row.innerHTML = `
+      <div class="checkbox ${task.done?'checked':''}" data-id="${task.id}"></div>
+      <div class="subject-name">${task.text}</div>
+      <button class="del-btn" data-del="${task.id}">✕</button>`;
+    wrap.appendChild(row);
+  });
+  wrap.querySelectorAll('.checkbox').forEach(cb=>{
+    cb.addEventListener('click', ()=> toggleTask(cb.dataset.id));
+  });
+  wrap.querySelectorAll('[data-del]').forEach(btn=>{
+    btn.addEventListener('click', ()=> deleteTask(btn.dataset.del));
+  });
+}
+
+function todayKey(){
+  const d = new Date();
+  return d.toISOString().slice(0,10);
+}
+
+function toggleTask(id){
+  const task = plannerState.tasks.find(t=>t.id===id);
+  if(!task) return;
+  task.done = !task.done;
+  const key = todayKey();
+  const doneCount = plannerState.tasks.filter(t=>t.done).length;
+  plannerState.history[key] = doneCount;
+  renderSubjects();
+  renderWeekBars();
+  savePlanner();
+}
+
+function deleteTask(id){
+  plannerState.tasks = plannerState.tasks.filter(t=>t.id!==id);
+  renderSubjects();
+  savePlanner();
+}
+
+function addTask(){
+  const input = document.getElementById('newTaskInput');
+  const text = input.value.trim();
+  if(!text) return;
+  plannerState.tasks.push({ id:'t'+Date.now(), text, done:false });
+  input.value = '';
+  renderSubjects();
+  savePlanner();
+}
+
+function renderWeekBars(){
+  const wrap = document.getElementById('weekBars');
+  wrap.innerHTML = '';
+  const labels = ['S','M','T','W','T','F','S'];
+  const maxVal = Math.max(1, ...plannerState.tasks.length ? [plannerState.tasks.length] : [1]);
+  for(let i=6;i>=0;i--){
+    const d = new Date();
+    d.setDate(d.getDate()-i);
+    const key = d.toISOString().slice(0,10);
+    const val = plannerState.history[key] || 0;
+    const pct = Math.min(100, (val / maxVal) * 100);
+    const col = document.createElement('div');
+    col.className = 'day-col';
+    col.innerHTML = `<div class="bar" style="height:${pct}%"></div><div class="day-label">${labels[d.getDay()]}</div>`;
+    wrap.appendChild(col);
+  }
+}
+
+document.getElementById('examDate').addEventListener('change', (e)=>{
+  plannerState.examDate = e.target.value;
+  renderCountdown();
+  savePlanner();
+});
+document.getElementById('addTaskBtn').addEventListener('click', addTask);
+document.getElementById('newTaskInput').addEventListener('keydown', (e)=>{
+  if(e.key==='Enter') addTask();
+});
+
+/* ============ FLASHCARDS ============ */
+function renderFlashCatScroll(){
+  const wrap = document.getElementById('flashCatScroll');
+  wrap.innerHTML = '';
+  Object.keys(FLASHCARDS).forEach(id=>{
+    const b = document.createElement('button');
+    b.className = 'cat-btn' + (flashState.catId===id ? ' selected':'');
+    b.textContent = FLASHCARDS[id].label;
+    b.addEventListener('click', ()=>{
+      flashState.catId = id;
+      flashState.idx = 0;
+      flashState.flipped = false;
+      flashState.order = [...Array(FLASHCARDS[id].cards.length).keys()];
+      renderFlashCatScroll();
+      renderFlashcard();
+    });
+    wrap.appendChild(b);
+  });
+}
+
+function renderFlashcard(){
+  const cat = FLASHCARDS[flashState.catId];
+  if(!flashState.order.length) flashState.order = [...Array(cat.cards.length).keys()];
+  const cardIndex = flashState.order[flashState.idx];
+  const card = cat.cards[cardIndex];
+  document.getElementById('flashCount').textContent = `Card ${flashState.idx+1} of ${cat.cards.length}`;
+  document.getElementById('flashLabel').textContent = flashState.flipped ? 'ANSWER' : 'TERM';
+  document.getElementById('flashText').textContent = flashState.flipped ? card.b : card.t;
+}
+
+document.getElementById('flashcard').addEventListener('click', ()=>{
+  flashState.flipped = !flashState.flipped;
+  renderFlashcard();
+});
+document.getElementById('nextCard').addEventListener('click', ()=>{
+  const cat = FLASHCARDS[flashState.catId];
+  flashState.idx = (flashState.idx+1) % cat.cards.length;
+  flashState.flipped = false;
+  renderFlashcard();
+});
+document.getElementById('prevCard').addEventListener('click', ()=>{
+  const cat = FLASHCARDS[flashState.catId];
+  flashState.idx = (flashState.idx-1+cat.cards.length) % cat.cards.length;
+  flashState.flipped = false;
+  renderFlashcard();
+});
+document.getElementById('shuffleCard').addEventListener('click', ()=>{
+  const cat = FLASHCARDS[flashState.catId];
+  flashState.order = shuffle([...Array(cat.cards.length).keys()]);
+  flashState.idx = 0;
+  flashState.flipped = false;
+  renderFlashcard();
+});
+
+/* ============ INIT ============ */
+async function init(){
+  await loadPlanner();
+  renderCountdown();
+  renderSubjects();
+  renderWeekBars();
+
+  await renderCatScroll();
+  renderQuizQuestion();
+
+  flashState.order = [...Array(FLASHCARDS[flashState.catId].cards.length).keys()];
+  renderFlashCatScroll();
+  renderFlashcard();
+}
+init();
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{ /* offline caching unavailable, app still works */ });
+  });
+}
+</script>
+</body>
+</html>
