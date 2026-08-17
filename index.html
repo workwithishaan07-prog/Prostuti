@@ -592,7 +592,38 @@
 
 <script>
 /* ============ DATA ============ */
-let QUIZ_DATA = {
+let QUIZ_DATA = {} ;
+  async function load500Questions(){
+  const response = await fetch('./Prostuti_500_Question_Bank.json');
+  const data = await response.json();
+
+  QUIZ_DATA = {};
+
+  data.forEach(item => {
+    const subject = item.Subject.trim();
+
+    if(!QUIZ_DATA[subject]){
+      QUIZ_DATA[subject] = {
+        label: subject,
+        questions: []
+      };
+    }
+
+    QUIZ_DATA[subject].questions.push({
+      q: item.Question,
+      o: [
+        item["Option A"],
+        item["Option B"],
+        item["Option C"],
+        item["Option D"]
+      ],
+      a: ["A","B","C","D"].indexOf(
+        item["Correct Answer"].trim().toUpperCase()
+      ),
+      e: item.Explanation || ""
+    });
+  });
+  }
   wb_gk: { label:"WB Static GK", questions:[
     {q:"What is the capital of West Bengal?", o:["Kolkata","Howrah","Durgapur","Siliguri"], a:0, e:"Kolkata has been the capital of West Bengal since 1947."},
     {q:"Which is the state animal of West Bengal?", o:["Royal Bengal Tiger","Fishing Cat","Indian Elephant","Gangetic Dolphin"], a:1, e:"The Fishing Cat (Mach-baghrol) was declared the state animal of West Bengal in 2012."},
@@ -1030,10 +1061,9 @@ document.getElementById('shuffleCard').addEventListener('click', ()=>{
 
 /* ============ INIT ============ */
 async function init(){
+  await load500Questions();
   await loadPlanner();
   renderCountdown();
-  renderSubjects();
-  renderWeekBars();
 
   await renderCatScroll();
   renderQuizQuestion();
