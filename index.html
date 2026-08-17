@@ -593,94 +593,45 @@
 <script>
 /* ============ DATA ============ */
 let QUIZ_DATA = {} ;
-  async function load500Questions(){
-  const response = await fetch('./Prostuti_500_Question_Bank.json');
-  const data = await response.json();
+  async function load500Questions() {
+  try {
+    const response = await fetch('./Prostuti_500_Question_Bank.json');
+    const data = await response.json();
 
-  QUIZ_DATA = {};
+    QUIZ_DATA = {};
 
-  data.forEach(item => {
-    const subject = item.Subject.trim();
+    data.forEach(item => {
+      const subject = (item.Subject || "General Knowledge").trim();
 
-    if(!QUIZ_DATA[subject]){
-      QUIZ_DATA[subject] = {
-        label: subject,
-        questions: []
-      };
-    }
+      if (!QUIZ_DATA[subject]) {
+        QUIZ_DATA[subject] = {
+          label: subject,
+          questions: []
+        };
+      }
 
-    QUIZ_DATA[subject].questions.push({
-      q: item.Question,
-      o: [
-        item["Option A"],
-        item["Option B"],
-        item["Option C"],
-        item["Option D"]
-      ],
-      a: ["A","B","C","D"].indexOf(
-        item["Correct Answer"].trim().toUpperCase()
-      ),
-      e: item.Explanation || ""
+      QUIZ_DATA[subject].questions.push({
+        q: item.Question,
+        o: [
+          item["Option A"],
+          item["Option B"],
+          item["Option C"],
+          item["Option D"]
+        ],
+        a: ["A", "B", "C", "D"].indexOf(
+          String(item["Correct Answer"]).trim().toUpperCase()
+        ),
+        e: item.Explanation || ""
+      });
     });
-  });
-  }
-  wb_gk: { label:"WB Static GK", questions:[
-    {q:"What is the capital of West Bengal?", o:["Kolkata","Howrah","Durgapur","Siliguri"], a:0, e:"Kolkata has been the capital of West Bengal since 1947."},
-    {q:"Which is the state animal of West Bengal?", o:["Royal Bengal Tiger","Fishing Cat","Indian Elephant","Gangetic Dolphin"], a:1, e:"The Fishing Cat (Mach-baghrol) was declared the state animal of West Bengal in 2012."},
-    {q:"Which distributary of the Ganga flows past Kolkata?", o:["Padma","Hooghly","Torsa","Rupnarayan"], a:1, e:"The Hooghly river, a distributary of the Ganga, flows through Kolkata."},
-    {q:"Sandakphu, the highest point in West Bengal, is located in which district?", o:["Jalpaiguri","Darjeeling","Kalimpong","Alipurduar"], a:1, e:"Sandakphu (about 3,636 m) lies in the Darjeeling district."},
-    {q:"The terracotta temples of Bishnupur are located in which district?", o:["Bankura","Purulia","Birbhum","Malda"], a:0, e:"Bishnupur, famous for its terracotta temples, is in Bankura district."},
-    {q:"The Sundarbans, the world's largest mangrove forest, is shared between West Bengal and which country?", o:["Myanmar","Nepal","Bangladesh","Bhutan"], a:2, e:"The Sundarbans span the delta region shared by West Bengal (India) and Bangladesh."},
-    {q:"Which of these does West Bengal NOT share an international border with?", o:["Bangladesh","Bhutan","Nepal","Pakistan"], a:3, e:"West Bengal borders Bangladesh, Bhutan and Nepal, but not Pakistan."}
-  ]},
-  history: { label:"History", questions:[
-    {q:"The Indigo Revolt (Neel Bidroho) in Bengal took place around which years?", o:["1857-58","1859-60","1875-76","1905-06"], a:1, e:"Peasants revolted against forced indigo cultivation in Bengal in 1859-60."},
-    {q:"Who wrote the play 'Nil Darpan', depicting the plight of indigo farmers?", o:["Bankim Chandra Chattopadhyay","Dinabandhu Mitra","Michael Madhusudan Dutt","Rabindranath Tagore"], a:1, e:"'Nil Darpan' (1860) was written by Dinabandhu Mitra."},
-    {q:"Who became the first Indian, and the first Asian, to win a Nobel Prize?", o:["C.V. Raman","Rabindranath Tagore","Amartya Sen","Ronald Ross"], a:1, e:"Rabindranath Tagore won the Nobel Prize in Literature in 1913 for 'Gitanjali'."},
-    {q:"Who authored 'Vande Mataram', later adopted as India's national song?", o:["Rabindranath Tagore","Ishwar Chandra Vidyasagar","Bankim Chandra Chattopadhyay","Sarat Chandra Chattopadhyay"], a:2, e:"Bankim Chandra Chattopadhyay wrote 'Vande Mataram' in his novel Anandamath."},
-    {q:"Swami Vivekananda represented Hinduism at which 1893 international event?", o:["League of Nations founding","World's Parliament of Religions, Chicago","Round Table Conference","Paris Peace Conference"], a:1, e:"He delivered his famous address at the World's Parliament of Religions in Chicago in 1893."},
-    {q:"The first partition of Bengal, which sparked major protest, was carried out in which year by Lord Curzon?", o:["1905","1911","1919","1935"], a:0, e:"Bengal was first partitioned in 1905; it was annulled in 1911."}
-  ]},
-  geography: { label:"Geography", questions:[
-    {q:"West Bengal lies mainly within which major delta system?", o:["Godavari delta","Ganga-Brahmaputra delta","Krishna delta","Indus delta"], a:1, e:"Much of southern West Bengal lies in the fertile Ganga-Brahmaputra delta."},
-    {q:"The Darjeeling Himalayan region of West Bengal is especially known for producing which crop?", o:["Coffee","Tea","Cotton","Sugarcane"], a:1, e:"Darjeeling is world-famous for its tea gardens."},
-    {q:"Digha, a popular beach destination, lies in which district of West Bengal?", o:["Purba Medinipur","South 24 Parganas","Bankura","Nadia"], a:0, e:"Digha is located in Purba Medinipur district, on the Bay of Bengal coast."},
-    {q:"The Farakka Barrage, an important structure for West Bengal, is built across which river?", o:["Damodar","Ganga","Teesta","Ajay"], a:1, e:"The Farakka Barrage on the Ganga was built to divert water into the Hooghly."},
-    {q:"The relatively dry, undulating western part of West Bengal (Bankura, Purulia, parts of Birbhum) is known as the:", o:["Terai region","Rarh region","Sundarbans region","Duars region"], a:1, e:"This laterite upland tract is traditionally called the Rarh region."},
-    {q:"The Duars region of North Bengal is chiefly known for:", o:["Desert landscapes","Forests, tea gardens and river plains at the Himalayan foothills","Coral reefs","Salt pans"], a:1, e:"The Duars are foothill plains known for forests, tea estates and rivers."}
-  ]},
-  polity: { label:"Polity", questions:[
-    {q:"Which Article of the Indian Constitution guarantees the Right to Constitutional Remedies?", o:["Article 21","Article 32","Article 14","Article 19"], a:1, e:"Article 32 empowers citizens to approach the Supreme Court to enforce fundamental rights."},
-    {q:"Who is the constitutional/nominal head of a state government in India?", o:["Chief Minister","Governor","Chief Secretary","Speaker"], a:1, e:"The Governor is the nominal head of a state, appointed by the President."},
-    {q:"What is the minimum age to contest election as an MLA in India?", o:["21 years","25 years","30 years","35 years"], a:1, e:"A candidate must be at least 25 years old to contest for a Legislative Assembly seat."},
-    {q:"Which schedule of the Constitution deals with the powers of Panchayati Raj institutions?", o:["9th Schedule","10th Schedule","11th Schedule","12th Schedule"], a:2, e:"The 11th Schedule lists subjects assigned to Panchayats; the 12th covers Municipalities."},
-    {q:"The West Bengal Legislative Assembly is:", o:["Bicameral, with a Legislative Council","Unicameral, with only a Legislative Assembly","Tricameral","Advisory only"], a:1, e:"West Bengal has a unicameral legislature; its Legislative Council was abolished in 1969."},
-    {q:"How many elected seats does the West Bengal Legislative Assembly have?", o:["234","294","324","403"], a:1, e:"The West Bengal Vidhan Sabha has 294 seats."}
-  ]},
-  reasoning: { label:"Reasoning", questions:[
-    {q:"Find the next number: 2, 6, 12, 20, 30, ?", o:["36","40","42","48"], a:2, e:"Differences increase by 2 each time (4,6,8,10,12) → 30+12 = 42."},
-    {q:"If CAT is coded as DBU, what is DOG coded as?", o:["EPH","EPI","FPH","EOH"], a:0, e:"Each letter is shifted forward by one: D→E, O→P, G→H, giving EPH."},
-    {q:"Pick the odd one out: Apple, Mango, Potato, Banana", o:["Apple","Mango","Potato","Banana"], a:2, e:"Potato is a vegetable/tuber; the others are fruits."},
-    {q:"A is B's father. B is C's sister. How is A related to C?", o:["Uncle","Father","Brother","Grandfather"], a:1, e:"Since B is C's sister, and A is B's father, A is also C's father."},
-    {q:"Complete the series: AZ, BY, CX, ?", o:["DW","DV","EW","EW"], a:0, e:"First letters move forward (A,B,C,D...); second letters move backward (Z,Y,X,W...) → DW."},
-    {q:"What is the angle between the hour and minute hands of a clock at 3:15?", o:["0°","7.5°","15°","22.5°"], a:1, e:"At 3:15 the hour hand has moved slightly past 3, giving a 7.5° gap from the minute hand."}
-  ]},
-  math: { label:"Math", questions:[
-    {q:"What is 15% of 240?", o:["24","32","36","40"], a:2, e:"15% of 240 = (15/100) × 240 = 36."},
-    {q:"An item costing ₹400 is sold at a 20% profit. What is the selling price?", o:["₹420","₹440","₹460","₹480"], a:3, e:"Profit = 20% of 400 = 80, so SP = 400 + 80 = ₹480."},
-    {q:"What is the average of 10, 20, 30 and 40?", o:["20","25","30","35"], a:1, e:"Sum = 100, divided by 4 numbers = 25."},
-    {q:"A 100 m long train crosses a pole in 10 seconds. What is its speed in km/h?", o:["18 km/h","36 km/h","45 km/h","60 km/h"], a:1, e:"Speed = 100m/10s = 10 m/s = 10 × 18/5 = 36 km/h."},
-    {q:"What is the simple interest on ₹1,000 at 5% per annum for 2 years?", o:["₹50","₹100","₹150","₹200"], a:1, e:"SI = (P×R×T)/100 = (1000×5×2)/100 = ₹100."},
-    {q:"What is the LCM of 12 and 18?", o:["24","30","36","72"], a:2, e:"12 = 2²×3, 18 = 2×3² → LCM = 2²×3² = 36."}
-  ]},
-  current_affairs: { label:"Current Affairs", questions:[
-    {q:"Who is the Chief Minister of West Bengal, following the 2026 assembly election?", o:["Mamata Banerjee","Suvendu Adhikari","Sovandeb Chattopadhyay","Firhad Hakim"], a:1, e:"Suvendu Adhikari became Chief Minister of West Bengal from 9 May 2026."},
-    {q:"Who is the current Governor of West Bengal?", o:["C.V. Ananda Bose","Jagdeep Dhankhar","R. N. Ravi","La. Ganesan"], a:2, e:"R. N. Ravi was appointed Governor of West Bengal in March 2026, succeeding C.V. Ananda Bose."},
-    {q:"Before West Bengal, R. N. Ravi served as Governor of which state?", o:["Kerala","Tamil Nadu","Bihar","Odisha"], a:1, e:"R. N. Ravi was Governor of Tamil Nadu from September 2021 before his transfer to West Bengal."},
-    {q:"Who became Leader of the Opposition in the West Bengal Assembly after the 2026 election?", o:["Suvendu Adhikari","Adhir Ranjan Chowdhury","Sovandeb Chattopadhyay","Sujan Chakraborty"], a:2, e:"Sovandeb Chattopadhyay took over as Leader of the Opposition from 9 May 2026."}
-  ]}
-};
 
+    console.log("Loaded questions:", data.length);
+    console.log("Subjects:", Object.keys(QUIZ_DATA));
+
+  } catch (error) {
+    console.error("Question bank error:", error);
+  }
+  }
 const FLASHCARDS = {
   wb_gk: { label:"WB Static GK", cards:[
     {t:"Capital of West Bengal", b:"Kolkata"},
