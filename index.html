@@ -760,7 +760,49 @@ async function renderCatScroll(){
     wrap.appendChild(b);
   });
 }
+async function load500Questions(){
+  try{
+    const response = await fetch('Prostuti_500_Question_Bank.json');
+    const data = await response.json();
 
+    const converted = {};
+
+    data.forEach(item => {
+      const subject = item["Subject"] || "General Knowledge";
+
+      const key = subject
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_|_$/g, "");
+
+      if(!converted[key]){
+        converted[key] = {
+          label: subject,
+          questions: []
+        };
+      }
+
+      const answerMap = {A:0, B:1, C:2, D:3};
+
+      converted[key].questions.push({
+        q: item["Question"],
+        o: [
+          item["Option A"],
+          item["Option B"],
+          item["Option C"],
+          item["Option D"]
+        ],
+        a: answerMap[item["Correct Answer"]],
+        e: item["Explanation"] || ""
+      });
+    });
+
+    QUIZ_DATA = converted;
+
+  }catch(error){
+    console.error("Question bank error:", error);
+  }
+  }
 function startQuiz(catId){
   quizState = { catId, idx:0, score:0, answered:false, order:shuffle([...Array(QUIZ_DATA[catId].questions.length).keys()]) };
   renderCatScroll();
@@ -995,7 +1037,7 @@ async function init(){
 
   await renderCatScroll();
   renderQuizQuestion();
-
+await load500Questions();
   flashState.order = [...Array(FLASHCARDS[flashState.catId].cards.length).keys()];
   renderFlashCatScroll();
   renderFlashcard();
